@@ -12,7 +12,7 @@ function TodoListComponent(props) {
 				root: 'marginContainer'
 			}}
 		>
-			{listTodo && listTodo.map(todo => (
+			{listTodo.map(todo => (
 				<TodoComponent key={todo.id}
 					title={todo.text}
 					checked={todo.isCompleted}

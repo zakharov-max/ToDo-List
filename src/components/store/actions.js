@@ -8,18 +8,13 @@ export const addTodo = text => ({
     text
 })
 
-export const deleteTodo = (id) => ({
+export const deleteTodo = id => ({
     type: REMOVE_TODO,
     id: id
 })
 
-export const toggleTodo = (id) => ({
+export const toggleTodo = id => ({
     type: TOGGLE_TODO,
     id: id,
     isCompleted: true
 })
-
-// export const setVisibilityFilter = filter => ({
-//   type: SET_VISIBILITY_FILTER,
-//   filter
-// })
