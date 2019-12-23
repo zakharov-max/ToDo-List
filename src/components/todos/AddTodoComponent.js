@@ -5,77 +5,53 @@ import Button from "@material-ui/core/Button";
 
 class AddTodoComponent extends React.Component {
 	constructor(props) {
-		super(props);
-		// описываем поля локального хранилища
-		// titleValue хранит текст, который ввел пользователь
-		// isError нужна для отображения ошибки (проверка на пустой титл)
+		super(props)
 		this.state = {
-			titleValue: '',
-			isError: false
-		};
-		this.handleChange = this.handleChange.bind(this);
-		this.handleSubmit = this.handleSubmit.bind(this);
-	}
-
-	// функция, которая обрабаотывает изменение инпута (TextField)
-	handleChange(event) {
-		// отменям стандартное поведение функции события
-		event.preventDefault();
-		this.setState({
-			titleValue: event.target.value,
-			isError: false
-		});
-	}
-
-	// функция обработки события подтверждения формы
-	handleSubmit(event) {
-		event.preventDefault();
-
-		//Если титл не пустой
-		if (this.state.titleValue) {
-			// то вызываем функцию из пропсов
-			// при помощи которой добавляем элемент
-			this.props.addTodo(this.state.titleValue);
-			this.setState({
-				titleValue: ''
-			});
-		} else {
-			// если титл пустой
-			// говорим состоянию, что ошибуля
-			this.setState({
-				isError: true
-			});
+			titleValue: ''
 		}
+	}
+
+	handleSubmit = (e) => {
+		e.preventDefault();
+
+		this.props.addTodo(this.state.titleValue);
+		this.setState({ titleValue: '' });
+
+	}
+
+	handleChange(e) {
+		this.setState({
+			titleValue: e.target.value
+		})
 	}
 
 	render() {
 		return (
 			<form onSubmit={this.handleSubmit}>
 				<Grid container
-				      spacing={8}
-				      classes={{
-				      	root: 'marginContainer'
-				      }}
+					spacing={8}
+					classes={{
+						root: 'marginContainer'
+					}}
 				>
 					<Grid item
-					      xs={9}
+						xs={9}
 					>
 						<TextField label="Title"
-						           value={this.state.titleValue}
-						           onChange={this.handleChange}
-						           error={this.state.isError} // применяем значение ошибки
-						           fullWidth
+							value={this.state.titleValue}
+							onChange={(e) => this.handleChange(e)}
+							fullWidth
 						/>
 					</Grid>
 					<Grid item
-					      xs={3}
-					      container
-					      justify="flex-end"
+						xs={3}
+						container
+						justify="flex-end"
 					>
 						<Button color="primary"
-						        variant="contained"
-						        type="submit"
-						        size="large"
+							variant="contained"
+							type="submit"
+							size="large"
 						>
 							Add
 						</Button>

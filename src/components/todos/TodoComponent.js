@@ -18,36 +18,38 @@ function TodoComponent(props) {
 
 	return (
 		<Grid item
-		      container
-		      xs={12}
-		      classes={{
-		      	item: 'perfectTodo'
-		      }}
+			container
+			xs={12}
+			classes={{
+				item: 'perfectTodo'
+			}}
 		>
 			<Grid item
-			      xs={3}
-			      container
-			      alignItems="center"
+				xs={1}
+				container
+				alignItems="center"
 			>
 				<Checkbox checked={props.checked}
-				          onChange={handleChange}
+					onChange={handleChange}
 				/>
 			</Grid>
+
 			<Grid item
-			      xs={6}
-			      container
-			      alignItems="center"
+				xs={9}
+				container
+				alignItems="center"
+				style={{ wordBreak: 'break-all' }}
 			>
 				<Typography variant="h5"
-				            classes={{
-				            	root: props.checked ? 'line' : 'defaultText'
-				            }}
+					classes={{
+						root: props.checked ? 'line' : 'defaultText'
+					}}
 				>
 					{props.title}
 				</Typography>
 			</Grid>
 			<Grid item
-			      xs={3}
+				xs={2}
 			>
 				<Fab onClick={handleClick}>
 					<Close />

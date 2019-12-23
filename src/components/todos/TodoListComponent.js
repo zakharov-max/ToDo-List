@@ -4,21 +4,21 @@ import TodoComponent from "./TodoComponent";
 
 function TodoListComponent(props) {
 	// компонент, ответственный за рендер списка дел
-	const {listTodo, onCheckTodo, removeTodo} = props;
+	const { listTodo, onCheckTodo, removeTodo } = props;
 	return (
 		<Grid container
-		      spacing={8}
-		      classes={{
-			      root: 'marginContainer'
-		      }}
+			spacing={8}
+			classes={{
+				root: 'marginContainer'
+			}}
 		>
-			{listTodo.map(todo => (
+			{listTodo && listTodo.map(todo => (
 				<TodoComponent key={todo.id}
-				               title={todo.title}
-				               checked={todo.checked}
-				               id={todo.id}
-				               onCheckTodo={onCheckTodo}
-				               removeTodo={removeTodo}
+					title={todo.text}
+					checked={todo.isCompleted}
+					id={todo.id}
+					onCheckTodo={onCheckTodo}
+					removeTodo={removeTodo}
 				/>
 			))}
 		</Grid>
